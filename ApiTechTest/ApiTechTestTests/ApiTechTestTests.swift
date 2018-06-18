@@ -11,6 +11,8 @@ import XCTest
 
 class ApiTechTestTests: XCTestCase {
     
+    let urlSession = URLSession(configuration: .default)
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,16 +23,42 @@ class ApiTechTestTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testServerShouldRespondWithDataAndStatusCode200()
+    {
+        // Create an expectation for a background download task.
+        let expectation = XCTestExpectation(description: "Download data from server")
+        
+        if var urlComponents = URLComponents(string: ClientApi.baseUrl) {//
+            
+            urlComponents.query = "q=dishwasher&key=\(ClientApi.apiKey)&pageSize=20"
+            
+            let dataTask = urlSession.dataTask(with: urlComponents.url!) { data, response, error in
+                
+                if let errorReturn = error {
+                    
+                    print("url error: \(errorReturn.localizedDescription)")
+                    
+                }
+                else if data != nil {
+                    // no error
+                    
+                    if let resp = response as? HTTPURLResponse {
+                        
+                        if resp.statusCode == 200 {
+                            
+                            // Make sure we downloaded some data.
+                            XCTAssertNotNil(data, "No data was downloaded.")
+                            
+                            // Fulfill the expectation to indicate that the background task has finished successfully.
+                            expectation.fulfill()
+                        }
+                    }
+                }
+            }
+            dataTask.resume()
         }
+        
+        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
+        wait(for: [expectation], timeout: 10.0)
     }
-    
 }
