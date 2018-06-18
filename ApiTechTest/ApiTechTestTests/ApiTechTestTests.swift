@@ -84,7 +84,7 @@ class ApiTechTestTests: XCTestCase {
         
         if var urlComponents = URLComponents(string: ClientApi.searchUrl) {//
             
-            urlComponents.query = "q=dishwasher&key=\(ClientApi.apiKey)&pageSize=20"
+            urlComponents.query = ClientApi.shared.getQueryProduct(productType: "dishwasher", productsPerPage: 20)
             
             let dataTask = urlSession.dataTask(with: urlComponents.url!) { data, response, error in
                 

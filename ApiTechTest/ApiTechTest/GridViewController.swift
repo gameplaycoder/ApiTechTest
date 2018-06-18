@@ -12,13 +12,57 @@ private let reuseIdentifier = "GridCell"
 
 class GridViewController: UICollectionViewController {
 
+    let urlSession = URLSession(configuration: .default)
+    
     var productsArray = [GridProductModel]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
+        getGridProductsFromServer()
+        
     }
 
+    func getGridProductsFromServer()
+    {
+        if var urlComponents = URLComponents(string: ClientApi.searchUrl) {
+            
+            urlComponents.query = ClientApi.shared.getQueryProduct(productType: "dishwasher", productsPerPage: 20)
+            
+            let dataTask = urlSession.dataTask(with: urlComponents.url!) { data, response, error in
+                
+                if let errorReturn = error {
+                    
+                    print("url error: \(errorReturn.localizedDescription)")
+                    
+                }
+                else if data != nil {
+                    // no error
+                    
+                    if let resp = response as? HTTPURLResponse {
+                        
+                        if resp.statusCode == 200 {
+                            
+                            
+                            let jsonDic = try? JSONSerialization.jsonObject(with: data!) as? [String:Any]
+                            
+                            if let productsDict = jsonDic!!["products"] as? [Any] {
+                                
+                                // get the list of products in to our array
+                                
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            dataTask.resume()
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
