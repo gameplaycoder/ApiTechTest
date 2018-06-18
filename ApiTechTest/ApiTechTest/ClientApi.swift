@@ -26,6 +26,11 @@ final class ClientApi {
          return "q=\(productType)&key=\(ClientApi.apiKey)&pageSize=\(productsPerPage)"
     }
     
+    func getQueryProductDetails(productId:String) ->String
+    {
+        return "\(productId)?key=\(ClientApi.apiKey)"
+    }
+    
     class var shared:ClientApi {
         
         struct SingletonWrapper {
