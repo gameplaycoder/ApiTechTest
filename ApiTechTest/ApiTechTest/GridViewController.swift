@@ -125,9 +125,12 @@ class GridViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? GridViewCell
     
-        // Configure the cell
-        cell?.imageView.image = self.productsArray[indexPath.row].image
+        let product = self.productsArray[indexPath.row]
         
+        // Configure the cell
+        cell?.imageView.image = product.image
+        cell?.titleLabel.text = product.title
+        cell?.costLabel.text = "£\(product.price)"
         
         return cell!
     }
