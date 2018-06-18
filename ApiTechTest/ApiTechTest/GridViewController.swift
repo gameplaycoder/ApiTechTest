@@ -139,11 +139,26 @@ class GridViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        /*
         let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
         
         let productDetailViewController = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as? ProductDetailsViewController
         
+            productDetailViewController?.navTitle = productsArray[indexPath.row].title
+            productDetailViewController?.image = productsArray[indexPath.row].image
         self.navigationController?.pushViewController(productDetailViewController!, animated: true)
+        */
+        
+        let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
+        
+        let productDetailViewController = storyBoard.instantiateViewController(withIdentifier: "DetailTableViewController") as? DetailTableViewController
+        
+        productDetailViewController?.navTitle = productsArray[indexPath.row].title
+        productDetailViewController?.image = productsArray[indexPath.row].image
+       productDetailViewController?.price = productsArray[indexPath.row].price
+        self.navigationController?.pushViewController(productDetailViewController!, animated: true)
+        
+        
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
