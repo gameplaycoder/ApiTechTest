@@ -168,6 +168,7 @@
                                                 <constraint firstItem="wHe-Le-gov" firstAttribute="leading" secondItem="gaM-QY-azZ" secondAttribute="leading" id="b3q-SE-LzD"/>
                                                 <constraint firstItem="WwH-UH-hoX" firstAttribute="top" secondItem="0tD-Jt-nrO" secondAttribute="topMargin" id="hni-j5-BYz"/>
                                                 <constraint firstItem="EYr-Cy-yAV" firstAttribute="width" secondItem="gaM-QY-azZ" secondAttribute="width" id="lzM-nc-NOO"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EYr-Cy-yAV" secondAttribute="trailing" constant="16" id="o3s-by-gMS"/>
                                                 <constraint firstItem="wHe-Le-gov" firstAttribute="trailing" secondItem="gaM-QY-azZ" secondAttribute="trailing" id="rmM-o8-8Ta"/>
                                                 <constraint firstItem="WwH-UH-hoX" firstAttribute="trailing" secondItem="wHe-Le-gov" secondAttribute="trailing" id="spF-Ih-qpC"/>
                                                 <constraint firstItem="WwH-UH-hoX" firstAttribute="trailing" secondItem="0tD-Jt-nrO" secondAttribute="trailingMargin" id="zaL-JL-ibx"/>
