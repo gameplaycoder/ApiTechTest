@@ -49,8 +49,48 @@ class GridViewController: UICollectionViewController {
                             
                             if let productsDict = jsonDic!!["products"] as? [Any] {
                                 
-                                // get the list of products in to our array
-                                
+                                for product in productsDict {
+                                    
+                                    if let productDict = product as? [String:Any] {
+                                        
+                                        var image:UIImage?
+                                        var productId:String?
+                                        var title:String?
+                                        var price:String?
+                                        
+                                        productId = productDict["productId"] as? String
+                                        
+                                        title = productDict["title"] as? String
+                                       
+                                        if let priceDic = productDict["price"] as? [String:String] {
+                                            
+                                            price = priceDic["now"]
+                                            
+                                        }
+                                        
+                                        if let imageUrl = productDict["image"] as? String {
+                                            
+                                            print("https:\(imageUrl)")
+                                            
+                                            if let data = try? Data(contentsOf: URL(string: "https:\(imageUrl)")!) {
+                                                
+                                                image = UIImage(data: data)
+                                                
+                                            }
+                                            
+                                        }
+                                        
+                                        
+                                        DispatchQueue.main.async {
+                                            
+                                            self.productsArray.append(GridProductModel(productId: productId!, title: title!, price: price!, imageUrl: image))
+                                            
+                                            self.collectionView?.reloadData()
+                                        }
+                                        
+                                    }
+                                    
+                                }
                                 
                             }
                             
@@ -83,11 +123,13 @@ class GridViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? GridViewCell
     
         // Configure the cell
-    
-        return cell
+        cell?.imageView.image = self.productsArray[indexPath.row].image
+        
+        
+        return cell!
     }
 
     // MARK: UICollectionViewDelegate

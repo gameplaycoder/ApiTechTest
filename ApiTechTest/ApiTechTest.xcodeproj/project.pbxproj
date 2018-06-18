@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811F0DBB20D7CEC6001B913A /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F0DBA20D7CEC6001B913A /* GridViewCell.swift */; };
 		81E5A0DF20D73D090050889B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5A0DE20D73D090050889B /* AppDelegate.swift */; };
 		81E5A0E420D73D090050889B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81E5A0E220D73D090050889B /* Main.storyboard */; };
 		81E5A0E620D73D120050889B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E5A0E520D73D120050889B /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		811F0DBA20D7CEC6001B913A /* GridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
 		81E5A0DB20D73D090050889B /* ApiTechTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApiTechTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E5A0DE20D73D090050889B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81E5A0E320D73D090050889B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				81E5A0EA20D73D120050889B /* Info.plist */,
 				81E5A0FE20D73DD20050889B /* GridViewController.swift */,
 				81E5A10020D7413C0050889B /* ClientApi.swift */,
+				811F0DBA20D7CEC6001B913A /* GridViewCell.swift */,
 			);
 			path = ApiTechTest;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				81E5A0FF20D73DD20050889B /* GridViewController.swift in Sources */,
 				81E5A0DF20D73D090050889B /* AppDelegate.swift in Sources */,
+				811F0DBB20D7CEC6001B913A /* GridViewCell.swift in Sources */,
 				81E5A10120D7413C0050889B /* ClientApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
