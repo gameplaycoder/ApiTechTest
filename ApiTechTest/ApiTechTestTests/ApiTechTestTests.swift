@@ -28,7 +28,9 @@ class ApiTechTestTests: XCTestCase {
         // Create an expectation for a background download task.
         let expectation = XCTestExpectation(description: "Download data from server")
         
-        if var urlComponents = URLComponents(string: ClientApi.baseUrl) {//
+        print("ClientApi.searchUrl \(ClientApi.searchUrl)")
+        
+        if var urlComponents = URLComponents(string: ClientApi.searchUrl) {//
             
             urlComponents.query = "q=dishwasher&key=\(ClientApi.apiKey)&pageSize=20"
             
@@ -80,7 +82,7 @@ class ApiTechTestTests: XCTestCase {
         // Create an expectation for a background download task.
         let expectation = XCTestExpectation(description: "Download products from server")
         
-        if var urlComponents = URLComponents(string: ClientApi.baseUrl) {//
+        if var urlComponents = URLComponents(string: ClientApi.searchUrl) {//
             
             urlComponents.query = "q=dishwasher&key=\(ClientApi.apiKey)&pageSize=20"
             
@@ -120,6 +122,13 @@ class ApiTechTestTests: XCTestCase {
         
         // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
         wait(for: [expectation], timeout: 10.0)
+        
+    }
+    
+    func testServerShouldRespondWithProductDetailsGivenProductId()
+    {
+        
+        
         
     }
     

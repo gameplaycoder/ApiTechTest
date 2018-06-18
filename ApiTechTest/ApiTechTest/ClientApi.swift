@@ -12,12 +12,15 @@ import Foundation
 final class ClientApi {
 
     static let apiKey = "Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb"
-    static let baseUrl = "https://api.johnlewis.com/v1/products/search"
+    static let baseUrl = "https://api.johnlewis.com/v1/products/"
+    
+    static let searchUrl = baseUrl+"search"
     
     private init()
     {
         
     }
+    
     func getQueryProduct(productType:String, productsPerPage:Int) ->String
     {
          return "q=\(productType)&key=\(ClientApi.apiKey)&pageSize=\(productsPerPage)"
