@@ -61,6 +61,18 @@ class ApiTechTestTests: XCTestCase {
         // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
         wait(for: [expectation], timeout: 10.0)
     }
+    func testApiClientShouldConstructCorrectQueryGivenProductTypeAndProductsPerPage()
+    {
+        // Given
+        let productType = "dishwasher"
+        let productsPerPage = 20
+        
+        // Where
+        let queryString = ClientApi.shared.getQueryProduct(productType:productType, productsPerPage:productsPerPage)
+        
+        // Then
+        XCTAssertEqual(queryString , "q=dishwasher&key=\(ClientApi.apiKey)&pageSize=20")
+    }
     
     func testServerShouldReturnListOfProductsGivenProductsPerPage()
     {
