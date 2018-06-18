@@ -12,6 +12,8 @@ private let reuseIdentifier = "GridCell"
 
 class GridViewController: UICollectionViewController {
 
+    var productsArray = [GridProductModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,17 +27,18 @@ class GridViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+
+        return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        
+        return productsArray.count
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
@@ -73,5 +76,28 @@ class GridViewController: UICollectionViewController {
     
     }
     */
+    
+    
 
 }
+
+class GridProductModel {
+    
+    var productId:String
+    
+    var title:String
+    
+    var image:UIImage?
+    
+    var price:String
+    
+    init(productId:String, title:String, price:String, imageUrl:UIImage?) {
+        
+        self.productId = productId
+        self.title = title
+        self.price = price
+        self.image = imageUrl
+    }
+    
+}
+
